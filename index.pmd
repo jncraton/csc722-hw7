@@ -89,3 +89,134 @@ Problem 5
 =========
 
 > Find correlation coefficient, r(X,Y), if Y = a X+b, in both cases when a > 0 and when a < 0.
+
+Recall the following definition of the Pearson correlation coefficient:
+
+$\rho_{X,Y}= \frac{Cov(X,Y)}{\sigma_X \sigma_Y}$
+
+Or, using variance directly:
+
+$\rho_{X,Y}= \frac{Cov(X,Y)}{\sqrt{Var(X)} \sqrt{Var(Y)}}$
+
+We can then use definitions for variance and covariance to expand this further:
+
+$Var(x) = {\sum_{i=1}^{n}(x_i - {\overline x})^2 \over n}$
+
+$Cov(x,y) = {\sum_{i=1}^{n}(x_i - {\overline x})(y_i - {\overline y}) \over n}$
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})(Y_i - {\overline Y}) \over n}
+}{
+  \sqrt{{\sum_{i=1}^{n}(X_i - {\overline X})^2 \over n}} 
+  \sqrt{{\sum_{i=1}^{n}(Y_i - {\overline Y})^2 \over n}}
+}$
+
+We can simplifiy the denominator somewhat:
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})(Y_i - {\overline Y}) \over n}
+}{
+  {1 \over n}
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+  \sqrt{\sum_{i=1}^{n}(Y_i - {\overline Y})^2}
+}$
+
+Then multiplying by $n \over n$:
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})(Y_i - {\overline Y})}
+}{
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+  \sqrt{\sum_{i=1}^{n}(Y_i - {\overline Y})^2}
+}$
+
+Now let's plug in our value for Y:
+
+$Y = a X+b$
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})(aX_i + b - a {\overline X} - b)}
+}{
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+  \sqrt{\sum_{i=1}^{n}(aX_i + b - a {\overline X} - b)^2}
+}$
+
+We see that our offset, $b$, simply drops out:
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})(aX_i - a {\overline X})}
+}{
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+  \sqrt{\sum_{i=1}^{n}(aX_i - a {\overline X})^2}
+}$
+
+We can now factor our scaling factor, $a$, out of the summations:
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})a(X_i - {\overline X})}
+}{
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+  \sqrt{\sum_{i=1}^{n}(a(X_i -  {\overline X}))^2}
+}$
+
+$\rho_{X,Y}= 
+\frac{
+  a{\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X})}
+}{
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+  \sqrt{\sum_{i=1}^{n}a^2(X_i -  {\overline X})^2}
+}$
+
+$\rho_{X,Y}= 
+\frac{
+  a{\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X})}
+}{
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+  a\sqrt{\sum_{i=1}^{n}(X_i -  {\overline X})^2}
+}$
+
+The $a$ now drops out completely thanks to being present in the numerator and denominator:
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X})}
+}{
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2}
+}$
+
+We can now simplify identical square roots:
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X})}
+}{
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+  \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2}
+}$
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X})}
+}{
+  {\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+}$
+
+We're having a good day.
+
+$\rho_{X,Y}= 
+\frac{
+  {\sum_{i=1}^{n}(X_i - {\overline X})^2}
+}{
+  {\sum_{i=1}^{n}(X_i - {\overline X})^2} 
+}$
+
+$\rho_{X,Y}=1$
+
+The correlation coefficient is one in this case. This shows that perfect correlation ignores both scaling and offset.
