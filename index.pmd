@@ -178,12 +178,13 @@ $\rho_{X,Y}=
   a{\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X})}
 }{
   \sqrt{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
-  a\sqrt{\sum_{i=1}^{n}(X_i -  {\overline X})^2}
+  |a|\sqrt{\sum_{i=1}^{n}(X_i -  {\overline X})^2}
 }$
 
-The $a$ now drops out completely thanks to being present in the numerator and denominator:
+The $a$ now drops out completely thanks to being present in the numerator and denominator. We end up with a piecewise expression due to the absolute value:
 
 $\rho_{X,Y}= 
+\pm
 \frac{
   {\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X})}
 }{
@@ -194,6 +195,7 @@ $\rho_{X,Y}=
 We can now simplify identical square roots:
 
 $\rho_{X,Y}= 
+\pm
 \frac{
   {\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X})}
 }{
@@ -202,6 +204,7 @@ $\rho_{X,Y}=
 }$
 
 $\rho_{X,Y}= 
+\pm
 \frac{
   {\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X})}
 }{
@@ -211,12 +214,13 @@ $\rho_{X,Y}=
 We're having a good day.
 
 $\rho_{X,Y}= 
+\pm
 \frac{
   {\sum_{i=1}^{n}(X_i - {\overline X})^2}
 }{
   {\sum_{i=1}^{n}(X_i - {\overline X})^2} 
 }$
 
-$\rho_{X,Y}=1$
+$\rho_{X,Y}=\pm1$
 
 The correlation coefficient is one in this case. This shows that perfect correlation ignores both scaling and offset.
