@@ -1,3 +1,27 @@
-% Title
-% Author
-% August 5th, 2018
+% CSC722 HW 7
+% Jon Craton
+
+Problem 1
+=========
+
+> What is covariance of W and Z, C(W,Z) if  W = a X and Z = c X. (find your solution in terms of X)
+
+Problem 2
+=========
+
+> What is covariance of W and Z, C(W,Z), if W = a X + b Y and Z = c X + d Y. (in terms of X and Y) 
+
+Problem 3
+=========
+
+> I throw a coin three times, I define X as number of heads for the first two flips and Y as the number of heads on the last two flips. Find C(X,Y)
+
+Problem 4
+=========
+
+> I have a random variable X that takes values -2,-1,0,1,2 each with probability .2. Let Y = X^2. What is C(X,Y). Are X and Y independent?
+
+Problem 5
+=========
+
+Find correlation coefficient, r(X,Y), if Y = a X+b, in both cases when a > 0 and when a < 0.
