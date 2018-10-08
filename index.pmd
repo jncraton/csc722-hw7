@@ -6,10 +6,74 @@ Problem 1
 
 > What is covariance of W and Z, C(W,Z) if  W = a X and Z = c X. (find your solution in terms of X)
 
+Here is the definition of covariance:
+
+$Cov(x,y) = {\sum_{i=1}^{n}(x_i - {\overline x})(y_i - {\overline y}) \over n}$
+
+So we can represent our problem as:
+
+$Cov(W,Z) = {\sum_{i=1}^{n}(W_i - {\overline W})(Z_i - {\overline Z}) \over n}$
+
+$Cov(W,Z) = {\sum_{i=1}^{n}a(X_i - {\overline X})c(X_i - {\overline X}) \over n}$
+
+We can factor out a and c:
+
+$Cov(W,Z) = ac{\sum_{i=1}^{n}(X_i - {\overline X})(X_i - {\overline X}) \over n}$
+
+Then simplify:
+
+$Cov(W,Z) = ac{\sum_{i=1}^{n}(X_i - {\overline X})^2 \over n}$
+
+Remembering our definition of variance, we can simplify further:
+
+$Var(x) = {\sum_{i=1}^{n}(x_i - {\overline x})^2 \over n}$
+
+$Cov(W,Z) = acVar(X)$
+
 Problem 2
 =========
 
-> What is covariance of W and Z, C(W,Z), if W = a X + b Y and Z = c X + d Y. (in terms of X and Y) 
+> What is covariance of W and Z, C(W,Z), if W = a X + b Y and Z = c X + d Y. (in terms of X and Y)
+
+Here is the definition of covariance:
+
+$Cov(W,Z) = {\sum_{i=1}^{n}(W_i - {\overline W})(Z_i - {\overline Z}) \over n}$
+
+Pluggin in W and Z:
+
+$Cov(W,Z) = {\sum_{i=1}^{n}(aX_i + bY_i - a{\overline X} - b{\overline Y})(cX_i + dY_i - c{\overline X} + d{\overline Y}) \over n}$
+
+We can factor a little:
+
+$Cov(W,Z) = {\sum_{i=1}^{n}(aX_i - a{\overline X} + bY_i - b{\overline Y})(cX_i - c{\overline X} + dY_i - d{\overline Y}) \over n}$
+
+$Cov(W,Z) = {\sum_{i=1}^{n}(a (X_i - {\overline X}) + b(Y_i - {\overline Y}))(c(X_i - {\overline X}) + d(Y_i - {\overline Y})) \over n}$
+
+We can then multiply:
+
+$Cov(W,Z) = {\sum_{i=1}^{n}(ac(X_i - {\overline X})^2 + ad(X_i - {\overline X})(Y_i - {\overline Y}) + bc(X_i - {\overline X})(Y_i - {\overline Y}) + bd(Y_i - {\overline Y})^2) \over n}$
+
+Then separate out the terms:
+
+$Cov(W,Z) = {\sum_{i=1}^{n}ac(X_i - {\overline X})^2 \over n} + 
+{\sum_{i=1}^{n}ad(X_i - {\overline X})(Y_i - {\overline Y}) \over n} + 
+{\sum_{i=1}^{n}bc(X_i - {\overline X})(Y_i - {\overline Y}) \over n} + 
+{\sum_{i=1}^{n}bd(Y_i - {\overline Y})^2) \over n}$
+
+And a bit more factoring:
+
+$Cov(W,Z) = {ac\sum_{i=1}^{n}(X_i - {\overline X})^2 \over n} + 
+{ad\sum_{i=1}^{n}(X_i - {\overline X})(Y_i - {\overline Y}) \over n} + 
+{bc\sum_{i=1}^{n}bc(X_i - {\overline X})(Y_i - {\overline Y}) \over n} + 
+{bd\sum_{i=1}^{n}(Y_i - {\overline Y})^2) \over n}$
+
+Then remembering the following definitions:
+
+$Var(x) = {\sum_{i=1}^{n}(x_i - {\overline x})^2 \over n}$
+
+$Cov(x,y) = {\sum_{i=1}^{n}(x_i - {\overline x})(y_i - {\overline y}) \over n}$
+
+$Cov(W,Z) = acVar(X) + adCov(X,Y) + bcCov(X,Y) + bdVar(Y)$
 
 Problem 3
 =========
@@ -24,4 +88,4 @@ Problem 4
 Problem 5
 =========
 
-Find correlation coefficient, r(X,Y), if Y = a X+b, in both cases when a > 0 and when a < 0.
+> Find correlation coefficient, r(X,Y), if Y = a X+b, in both cases when a > 0 and when a < 0.
