@@ -80,6 +80,60 @@ Problem 3
 
 > I throw a coin three times, I define X as number of heads for the first two flips and Y as the number of heads on the last two flips. Find C(X,Y)
 
+Let's recall once again the definition of covariance:
+
+$Cov(x,y) = {\sum_{i=1}^{n}(x_i - {\overline x})(y_i - {\overline y}) \over n}$
+
+We know the means, assuming this is a fair coin:
+
+${\overline X} = 1$
+
+${\overline Y} = 1$
+
+Let's enumerate possible outcomes, using 0 for tails and 1 for heads:
+
+```python
+from itertools import product
+
+outcomes = list(product([0,1], repeat=3))
+print(outcomes)
+```
+
+Then split this into X and Y and count numbers of heads:
+
+```python
+X = [sum(o[0:2]) for o in outcomes]
+Y = [sum(o[1:3]) for o in outcomes]
+```
+
+Now we can calculate covariance:
+
+```python
+def E(x):
+  """
+  Returns the mean of a list of numbers
+  
+  >>> E([1,2,3])
+  2.0
+  >>> E([1,1,1])
+  1.0
+  """
+
+  return sum(x)/len(x)
+
+def cov(x,y):
+  """
+  Returns the covariance of a list
+
+  >>> cov([2,3,4],[3,4,6])
+  1.0
+  """
+
+  return E([(xᵢ - E(x))*(yᵢ - E(y)) for xᵢ,yᵢ in zip(x,y)])
+
+print(cov(X,Y))
+```
+
 Problem 4
 =========
 
