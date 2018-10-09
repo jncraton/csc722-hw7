@@ -137,7 +137,24 @@ print(cov(X,Y))
 Problem 4
 =========
 
-> I have a random variable X that takes values -2,-1,0,1,2 each with probability .2. Let Y = X^2. What is C(X,Y). Are X and Y independent?
+> I have a random variable X that takes values -2,-1,0,1,2 each with probability .2. Let Y = X^2. What is C(X,Y).
+
+Let's enumatre our variables:
+
+```python
+X = list(range(-2,3))
+Y = [x**2 for x in X]
+```
+
+Then calculate covariance:
+
+```python
+print(cov(X,Y))
+```
+
+> Are X and Y independent?
+
+Despite X and Y having a covariance of zero, they are obviously not independent based on our knowledge of their construction. Covariance will be zero for independent variables, but a covariance of zero does not definitively imply independence.
 
 Problem 5
 =========
