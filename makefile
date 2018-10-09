@@ -1,22 +1,11 @@
-SRC=index
-PANDOC_VER=2.3.1
+SRC = index
 
-all: test $(SRC).html slides.html $(SRC).pdf
+all: test $(SRC).html slides.html
 
 .PHONY: show showpdf clean
 
 slides.html: $(SRC).md makefile
 	pandoc --mathjax -t revealjs -s -o $@ $< -V revealjs-url=https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0 -V theme=moon
-
-pandoc:
-	wget https://github.com/jgm/pandoc/releases/download/$(PANDOC_VER)/pandoc-$(PANDOC_VER)-linux.tar.gz
-	tar -zxvf pandoc-$(PANDOC_VER)-linux.tar.gz pandoc-$(PANDOC_VER)/bin/pandoc
-	mv pandoc-$(PANDOC_VER)/bin/pandoc .
-	rm -rf pandoc-$(PANDOC_VER)
-
-xetex:
-	wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
-	touch xetex
 
 $(SRC).odt: $(SRC).md
 	pandoc --toc -o $@ $<
@@ -35,8 +24,8 @@ $(SRC).md: $(SRC).pmd
 $(SRC).py: $(SRC).pmd
 	ptangle $(SRC).pmd
 
-$(SRC).pdf: $(SRC).md pandoc xetex
-	./pandoc --toc --variable fontsize=12pt --variable mainfont="FreeSans" --variable monofont="FreeMono" --mathjax --pdf-engine=$$HOME/bin/xelatex -s -o $@ $< 
+$(SRC).pdf: $(SRC).md
+	pandoc --toc --variable documentclass=extarticle --variable fontsize=12pt --variable mainfont="FreeSans" --variable monofont="FreeMono"  --mathjax --latex-engine=xelatex -s -o $@ $< 
 
 show: $(SRC).html
 	firefox $(SRC).html
@@ -62,4 +51,3 @@ clean:
 	rm -f $(SRC).txt $(SRC).odt $(SRC).docx $(SRC).pdf $(SRC).md $(SRC).py $(SRC)-test.py $(SRC).html slides.html
 	rm -rf figures
 	rm -rf __pycache__
-	rm -f pandoc
