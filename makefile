@@ -36,7 +36,7 @@ $(SRC).py: $(SRC).pmd
 	ptangle $(SRC).pmd
 
 $(SRC).pdf: $(SRC).md pandoc xetex
-	./pandoc --toc --variable documentclass=extarticle --variable fontsize=12pt --variable mainfont="FreeSans" --variable monofont="FreeMono"  --mathjax --pdf-engine=$HOME/bin/xelatex -s -o $@ $< 
+	./pandoc --toc --variable documentclass=extarticle --variable fontsize=12pt --variable mainfont="FreeSans" --variable monofont="FreeMono"  --mathjax --pdf-engine=$$HOME/bin/xelatex -s -o $@ $< 
 
 show: $(SRC).html
 	firefox $(SRC).html
