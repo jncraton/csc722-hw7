@@ -1,6 +1,6 @@
 [Settings]
+  ID = "6f65b2f0-b310-4590-86d1-2d33a5616720"
 
-[build]
-  base    = ""
-  publish = "."
-  command = "make"
+[Build]
+  Publish = "."
+  Functions = ""
