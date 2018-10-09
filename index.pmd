@@ -282,4 +282,4 @@ $\rho_{X,Y}={a \over |a|}$
 
 $\rho_{X,Y}=\begin{cases} 1, \mbox{if } a > 0 \\ -1, \mbox{if } a < 0\end{cases}$
 
-This shows that perfect correlation ignores both scaling and offset.
+This shows that correlation ignores both scaling and offset. It is simply a measure of linear relationship.
