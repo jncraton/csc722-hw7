@@ -1,6 +1,6 @@
 SRC = index
 
-all: test $(SRC).html slides.html
+all: test $(SRC).html slides.html $(SRC).pdf
 
 .PHONY: show showpdf clean
 
