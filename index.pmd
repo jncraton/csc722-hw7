@@ -39,7 +39,7 @@ Here is the definition of covariance:
 
 $Cov(W,Z) = {\sum_{i=1}^{n}(W_i - {\overline W})(Z_i - {\overline Z}) \over n}$
 
-Pluggin in W and Z:
+Replacing W and Z:
 
 $Cov(W,Z) = {\sum_{i=1}^{n}(aX_i + bY_i - a{\overline X} - b{\overline Y})(cX_i + dY_i - c{\overline X} + d{\overline Y}) \over n}$
 
@@ -84,12 +84,6 @@ Let's recall once again the definition of covariance:
 
 $Cov(x,y) = {\sum_{i=1}^{n}(x_i - {\overline x})(y_i - {\overline y}) \over n}$
 
-We know the means, assuming this is a fair coin:
-
-${\overline X} = 1$
-
-${\overline Y} = 1$
-
 Let's enumerate possible outcomes, using 0 for tails and 1 for heads:
 
 ```python
@@ -108,7 +102,7 @@ Y = [sum(o[1:3]) for o in outcomes]
 
 Now we can calculate covariance:
 
-```python
+```python, echo=False
 def E(x):
   """
   Returns the mean of a list of numbers
@@ -130,8 +124,10 @@ def cov(x,y):
   """
 
   return E([(xᵢ - E(x))*(yᵢ - E(y)) for xᵢ,yᵢ in zip(x,y)])
+```
 
-print(cov(X,Y))
+```python
+cov(X,Y)
 ```
 
 Problem 4
@@ -139,7 +135,7 @@ Problem 4
 
 > I have a random variable X that takes values -2,-1,0,1,2 each with probability .2. Let Y = X^2. What is C(X,Y).
 
-Let's enumatre our variables:
+Let's enumatre our outcomes:
 
 ```python
 X = list(range(-2,3))
@@ -149,7 +145,7 @@ Y = [x**2 for x in X]
 Then calculate covariance:
 
 ```python
-print(cov(X,Y))
+cov(X,Y)
 ```
 
 > Are X and Y independent?
@@ -165,7 +161,7 @@ Recall the following definition of the Pearson correlation coefficient:
 
 $\rho_{X,Y}= \frac{Cov(X,Y)}{\sigma_X \sigma_Y}$
 
-Or, using variance directly:
+Or, using variance directly in place of standard deviation:
 
 $\rho_{X,Y}= \frac{Cov(X,Y)}{\sqrt{Var(X)} \sqrt{Var(Y)}}$
 
@@ -269,7 +265,7 @@ $\rho_{X,Y}=
   |a|{\sum_{i=1}^{n}(X_i - {\overline X})^2} 
 }$
 
-We're having a good day.
+We can them simplify down to an expression of just a:
 
 $\rho_{X,Y}= 
 \frac{
@@ -282,4 +278,4 @@ $\rho_{X,Y}={a \over |a|}$
 
 $\rho_{X,Y}=\begin{cases} 1, \mbox{if } a > 0 \\ -1, \mbox{if } a < 0\end{cases}$
 
-This shows that correlation ignores both scaling and offset. It is simply a measure of linear relationship.
+This shows that correlation ignores both scaling and offset. It is simply a measure of direction and quality of linear relationships.
